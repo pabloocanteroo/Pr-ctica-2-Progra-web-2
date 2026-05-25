@@ -1,0 +1,153 @@
+/* ═══════════════════════════════════════════════
+   CromosMarket — Design System (Light Premium)
+   ═══════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+:root {
+  /* Paleta principal — tonos claros y vibrantes */
+  --primary: #6C5CE7;
+  --primary-light: #A29BFE;
+  --primary-bg: rgba(108, 92, 231, 0.08);
+  --accent: #00B894;
+  --accent-bg: rgba(0, 184, 148, 0.08);
+  --danger: #E17055;
+  --danger-bg: rgba(225, 112, 85, 0.08);
+  --warning: #FDCB6E;
+  --success: #00B894;
+
+  /* Fondos */
+  --bg: #F5F6FA;
+  --bg-card: #FFFFFF;
+  --bg-nav: rgba(255, 255, 255, 0.85);
+  --bg-overlay: rgba(0, 0, 0, 0.4);
+
+  /* Texto */
+  --text: #2D3436;
+  --text-secondary: #636E72;
+  --text-muted: #B2BEC3;
+
+  /* Bordes y sombras */
+  --border: rgba(0, 0, 0, 0.06);
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.04);
+  --shadow-md: 0 4px 20px rgba(0,0,0,0.06);
+  --shadow-lg: 0 8px 40px rgba(0,0,0,0.08);
+  --shadow-hover: 0 12px 40px rgba(108,92,231,0.15);
+
+  --radius: 14px;
+  --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.2;
+}
+
+/* ——— Glass Panel (light version) ——— */
+.glass-panel {
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-md);
+}
+
+/* ——— Inputs ——— */
+.input-glass {
+  background: var(--bg);
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+  font-family: 'Inter', sans-serif;
+  color: var(--text);
+  outline: none;
+  transition: var(--transition);
+  width: 100%;
+}
+.input-glass:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-bg);
+}
+.input-glass::placeholder { color: var(--text-muted); }
+
+/* ——— Buttons ——— */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.7rem 1.4rem;
+  border: none;
+  border-radius: 10px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.btn-primary {
+  background: var(--primary);
+  color: white;
+}
+.btn-primary:hover:not(:disabled) {
+  background: #5B4BD5;
+  box-shadow: 0 4px 15px rgba(108,92,231,0.3);
+  transform: translateY(-1px);
+}
+.btn-secondary {
+  background: var(--bg);
+  color: var(--text-secondary);
+  border: 1.5px solid var(--border);
+}
+.btn-secondary:hover:not(:disabled) {
+  border-color: var(--primary-light);
+  color: var(--primary);
+}
+.btn-danger {
+  background: var(--danger-bg);
+  color: var(--danger);
+  border: 1.5px solid rgba(225,112,85,0.15);
+}
+.btn-danger:hover:not(:disabled) {
+  background: var(--danger);
+  color: white;
+}
+
+/* ——— Layout ——— */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ——— Utilities ——— */
+.text-muted { color: var(--text-secondary); }
+.text-center { text-align: center; }
+
+/* ——— Scrollbar ——— */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--text-muted); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-secondary); }
+
+/* ——— Selection ——— */
+::selection {
+  background: var(--primary-light);
+  color: white;
+}

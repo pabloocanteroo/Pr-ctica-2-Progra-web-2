@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: backend-prod
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      - NODE_ENV=production
+      - MONGO_URI=mongodb://mongo:27017/productos
+      - JWT_SECRET=ClaveSeguraEnProduccion
+      - REDIS_URL=redis://redis:6379
+    depends_on:
+      - mongo
+      - redis
+    restart: always
+
+  frontend:
+    build:
+      context: ./frontend-cromos
+      dockerfile: Dockerfile.prod
+    container_name: frontend-prod
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: always
+
+  mongo:
+    image: mongo:6
+    container_name: mongo-prod
+    volumes:
+      - mongo_data_prod:/data/db
+    restart: always
+
+  redis:
+    image: redis:alpine
+    container_name: redis-prod
+    restart: always
+
+volumes:
+  mongo_data_prod:
